@@ -12,8 +12,40 @@
 				{
 					"name": "Post Product",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjJmNDc4MDFhNTEwMzllMGI3MGIwYSIsImlhdCI6MTY2MDA4OTQ5NSwiZXhwIjoxNjYwMTc1ODk1fQ.L7Jk3JdWlAy6tinjCa-7DQwYw4w2bFTqe_X2DHBy0T0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Laptop Huawei B-AA\",\r\n    \"category\": \"Laptops\",\r\n    \"price\": 2830.50,\r\n    \"imgUrl\": \"https://home.ripley.com.pe/Attachment/WOP_5/2004273877831/2004273877831-2.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"products"
+							]
+						}
 					},
 					"response": []
 				},
@@ -21,7 +53,322 @@
 					"name": "Get Products",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/products/62f1ddc7d7d039e0faf94947",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"products",
+								"62f1ddc7d7d039e0faf94947"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjFmNjVlNzFlMmFmMTM1MjBlMzJmZSIsImlhdCI6MTY2MDA3OTA2OCwiZXhwIjoxNjYwMTY1NDY4fQ.Mf1VyMk98ZCI-Gw8BOCaPCjW0oZptIsNfq1uTVUPYiQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/api/products/62f2f03a38c6daacfbd3da12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"products",
+								"62f2f03a38c6daacfbd3da12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjFmNjVlNzFlMmFmMTM1MjBlMzJmZSIsImlhdCI6MTY2MDA3OTA2OCwiZXhwIjoxNjYwMTY1NDY4fQ.Mf1VyMk98ZCI-Gw8BOCaPCjW0oZptIsNfq1uTVUPYiQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Laptop Huawei Z-1\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/products/62f2cc15bb8102b815bdb81c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"products",
+								"62f2cc15bb8102b815bdb81c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Admin\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"roles\": [\"user\", \"admin\", \"moderator\"]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Singin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Post Users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjFmNjVlNzFlMmFmMTM1MjBlMzJmZSIsImlhdCI6MTY2MDA4ODA5OSwiZXhwIjoxNjYwMTc0NDk5fQ.cxMHchQqFaDz6NIr5aE0X5Hdds2zXYm6OzepYPIzh-Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"fwwqe\",\r\n    \"email\": \"vbbbb@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"roles\": [\"admin\", \"moderator\"]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/users/62f1f65e71e2af13520e32fe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								"62f1f65e71e2af13520e32fe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjJmNDc4MDFhNTEwMzllMGI3MGIwYSIsImlhdCI6MTY2MDEwMTMwOCwiZXhwIjoxNjYwMTg3NzA4fQ.JJwUlhptAxteRWuBLBr7pR2IckQDUtyX-unvMl7vIvw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Ruth Zambrano\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/users/62f1f29476b3b287a95b51f3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								"62f1f29476b3b287a95b51f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjJmNDc4MDFhNTEwMzllMGI3MGIwYSIsImlhdCI6MTY2MDEwMTMwOCwiZXhwIjoxNjYwMTg3NzA4fQ.JJwUlhptAxteRWuBLBr7pR2IckQDUtyX-unvMl7vIvw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/api/users/62f320427d1defb94cddef54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"users",
+								"62f320427d1defb94cddef54"
+							]
+						}
 					},
 					"response": []
 				}

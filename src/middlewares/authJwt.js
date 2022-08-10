@@ -10,21 +10,21 @@ export const verifyToken = async (req, res, next) => {
 
   try {
     const decodedToken = jwt.verify(token, config.AUTH);
-    req.userId = decodedToken.id;
+    req.userTokenId = decodedToken.id;
 
-    const userToken = await User.findById(req.userId, { password: 0 });
+    const userToken = await User.findById(req.userTokenId, { password: 0 });
 
     if (!userToken) return res.status(404).json({ message: "User not Found" });
 
     next();
   } catch (error) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Unauthorized", error: error.message });
   }
 };
 
 export const isModerator = async (req, res, next) => {
   try {
-    const user = await User.findById(req.userId);
+    const user = await User.findById(req.userTokenId);
     const roles = await Role.find({ _id: { $in: user.roles } });
 
     for (let i = 0; i < roles.length; i++) {
@@ -36,13 +36,13 @@ export const isModerator = async (req, res, next) => {
 
     return res.status(403).json({ message: "Required Moderator Role" });
   } catch (error) {
-    return res.status(500).send({ message: error });
+    return res.status(500).send({ message: error.message });
   }
 };
 
 export const isAdmin = async (req, res, next) => {
   try {
-    const user = await User.findById(req.userId);
+    const user = await User.findById(req.userTokenId);
     const roles = await Role.find({ _id: { $in: user.roles } });
     
     for (let i = 0; i < roles.length; i++) {
@@ -51,9 +51,8 @@ export const isAdmin = async (req, res, next) => {
         return;
       }
     }
-
     return res.status(403).json({ message: "Required Admin Role" });
   } catch (error) {
-    return res.status(500).send({ message: error });
+    return res.status(500).send({ message: error.message });
   }
 };
