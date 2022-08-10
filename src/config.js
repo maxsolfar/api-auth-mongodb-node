@@ -1,3 +1,3 @@
 export default {
-  SECRET: "auth-user"
+  AUTH: "auth-user-mn"
 } 
